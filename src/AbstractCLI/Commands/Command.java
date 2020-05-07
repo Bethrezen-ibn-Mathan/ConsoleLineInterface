@@ -1,11 +1,6 @@
 package AbstractCLI.Commands;
 
-import AbstractCLI.Commands._old_tmp.GenericCommand;
-import AbstractCLI.Commands._old_tmp.Handling.CommandHandler;
-import AbstractCLI.Commands._old_tmp.Parsing.ArgsParser;
-import AbstractCLI.Commands._old_tmp.Parsing.OptionsTable;
-import AbstractCLI.Commands._old_tmp.Parsing.Std.DefaultArgsParser;
-import AbstractCLI.Commands._old_tmp.Parsing.Std.NoKeysParser;
+
 import AbstractCLI.Commands.Templates.Primitives.SimpleChainCommand;
 import AbstractCLI.Commands.Templates.Primitives.SimplePrintCommand;
 import AbstractCLI.Commands.Templates.Primitives.SimpleReturnCommand;
@@ -94,14 +89,5 @@ public interface Command {
         return new SimplePrintCommand(name, manuals);
     }
 
-    static <T> Command createGenericCommand
-            (String name, @NotNull OptionsTable<T> optionsTable, @NotNull CommandHandler<T> handler){
-        ArgsParser<T> parser = new DefaultArgsParser<>(name, optionsTable);
-        return new GenericCommand<T>(name, parser, handler);
-    }
-    static <T> Command createGenericCommand(String name, @NotNull CommandHandler<T> handler){
-        ArgsParser<T> parser = new NoKeysParser<>(name);
-        return new GenericCommand<T>(name, parser, handler);
-    }
 
 }

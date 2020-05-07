@@ -25,15 +25,20 @@ public class TestCLI extends GenericCLI{
     "* nop\n" +
     "* exit\n"+
     "* help\n"+
-    "* test [-t (--test)|-h (--help)|-n (--number=<value>)|-a (--array=<value>...)]\n";
+    "* test\n";
 
     public static final String[][] mans = {
             {"nop", "This command do nothing. Have no arguments / keys"},
             {"exit", "This command closes interaction. Have no arguments / keys"},
             {"help", "this command prints manuals. There are next command you can use:\n"+
                     commandsList},
-            {"test", "This command uses for test. Usage:\n\t" +
-                    "test [-t (--test)|-h (--help)|-n (--number=<value>)|-a (--array=<value>...)]"}
+            {"test", "Prints arguments to console (echo). Keys:\n\t" +
+                    "--test (-t): starts 3 handlers, print feedback to out\n\t" +
+                    "--help (-h): print this message\n\t" +
+                    "--number (-n): print number\n\t" +
+                    "--array (-a): print 2 numbers or more (similar to -n)\n\t" +
+                    "--silence (-s): blocks command's echo\n\t" +
+                    "--exit (-e): quits from CLI after command's finishing"}
     };
 
     public static Command
@@ -42,17 +47,11 @@ public class TestCLI extends GenericCLI{
             help,
             test;
 
-    public static final String parseme_conf =
-                    "aaa a 0\n" +
-                    "bbb b 0\n" +
-                    "ccc c 1\n" +
-                    "ddd d 2\n" +
-                    "eee e 3";
     public static final String test_conf =
                     "test t 0\n" +
                     "help h 0\n" +
                     "number n 1\n" +
-                    "array a 1\n" +
+                    "array a 2\n" +
                     "silence s 0\n" +
                     "exit e 0";
 
